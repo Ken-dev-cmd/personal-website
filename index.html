@@ -398,22 +398,6 @@ kbd{border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:
   color:var(--text-3);border:1px solid var(--border-strong);border-radius:5px;padding:.12rem .4rem;margin-left:.5rem}
 .tl-card ul{margin:.95rem 0 0;padding-left:1.15rem;color:var(--text-2);font-size:.89rem;display:grid;gap:.35rem}
 
-/* ============ Testimonials ============ */
-.testi-grid{display:grid;gap:1rem;grid-template-columns:1fr}
-@media(min-width:640px){.testi-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}}
-.testi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.3rem;
-  position:relative;transition:transform .22s,border-color .22s}
-@media(min-width:640px){.testi{padding:1.6rem}}
-.testi:hover{transform:translateY(-3px);border-color:var(--accent)}
-.testi::before{content:'“';position:absolute;top:.7rem;right:1.1rem;font-family:"Space Grotesk";
-  font-size:3.2rem;line-height:1;color:var(--accent);opacity:.28}
-.testi blockquote{margin:0 0 1.3rem;color:var(--text);font-size:.94rem;line-height:1.62}
-.testi-who{display:flex;align-items:center;gap:.8rem}
-.ava{width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
-  display:grid;place-items:center;font-weight:600;font-family:"Space Grotesk";font-size:.85rem;flex:none}
-.testi-name{font-weight:600;font-size:.92rem}
-.testi-role{color:var(--text-3);font-size:.78rem}
-
 /* ============ Contact ============ */
 .contact-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
 @media(min-width:900px){.contact-grid{grid-template-columns:1fr 1.1fr;gap:3.5rem}}
@@ -957,35 +941,6 @@ footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
   </div>
 </section>
 
-<!-- ============ Testimonials ============ -->
-<section class="section" id="testimonials" aria-label="Testimonials">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">~/kind-words</span>
-      <h2 tabindex="-1">Word on the wire</h2>
-      <p class="section-sub">From the people who shipped with me — and slept better for it.</p>
-    </div>
-    <div class="testi-grid">
-      <!-- ✏️ CUSTOMIZE: real quotes -->
-      <div class="testi reveal">
-        <blockquote>"Kendrick built our platform, then stayed to fix what reality threw at it. Our MTTR went from hours to minutes."</blockquote>
-        <div class="testi-who"><span class="ava" aria-hidden="true">ML</span>
-          <div><div class="testi-name">Maya Lindqvist</div><div class="testi-role">CTO, Freightline</div></div></div>
-      </div>
-      <div class="testi reveal">
-        <blockquote>"The rare developer who writes docs humans actually read. Our support queue dropped by a fifth after his knowledge base shipped."</blockquote>
-        <div class="testi-who"><span class="ava" aria-hidden="true">DO</span>
-          <div><div class="testi-name">Daniel Okafor</div><div class="testi-role">Support Lead, CloudBridge</div></div></div>
-      </div>
-      <div class="testi reveal">
-        <blockquote>"Calm under incident pressure, ruthless about root causes. If Kendrick ships it, you can sleep at night."</blockquote>
-        <div class="testi-who"><span class="ava" aria-hidden="true">PR</span>
-          <div><div class="testi-name">Priya Raman</div><div class="testi-role">Product Manager, TechNova</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ Contact ============ -->
 <section class="section" id="contact" aria-label="Contact">
   <div class="container">
@@ -1035,7 +990,7 @@ footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
             </div>
             <button class="btn btn-primary" type="submit">Send Message
               <svg class="ic" style="width:16px;height:16px" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-            <p class="form-note">// demo form — wire it to a real endpoint before launch</p>
+            <p class="form-note"></p>
           </div>
           <div class="form-success" id="form-status" tabindex="-1" role="status">
             <div class="success-ic"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg></div>
@@ -1245,7 +1200,6 @@ const cmds = [
   {t:'Services',h:'section',f:()=>go('#services')},
   {t:'Projects',h:'section',f:()=>go('#projects')},
   {t:'Experience',h:'section',f:()=>go('#experience')},
-  {t:'Testimonials',h:'section',f:()=>go('#testimonials')},
   {t:'Contact',h:'section',f:()=>go('#contact')},
   {t:'Toggle dark / light mode',h:'theme',f:toggleTheme},
   {t:'Copy email address',h:'action',f:copyEmail},
