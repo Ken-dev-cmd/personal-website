@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Set theme before first paint to avoid flash -->
+<script>
+(function(){try{var t=localStorage.getItem('theme');
+if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+document.documentElement.dataset.theme=t;}catch(e){}})();
+</script>
+
+<!-- ✏️ CUSTOMIZE: title, meta, canonical URL -->
+<title>Kendrick Lucena — Full-Stack Developer & Software Support Specialist</title>
+<meta name="description" content="Kendrick Lucena — full-stack developer who stands behind what he ships: web development, production debugging, incident management, and technical documentation. Based in San Pedro, Laguna, Philippines.">
+<link rel="canonical" href="https://itskendev.com/">
+<meta name="theme-color" content="#0a0a0f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kendrick Lucena — Full-Stack Developer & Support Specialist">
+<meta property="og:description" content="I build full-stack solutions — and support what I ship.">
+<meta property="og:url" content="https://itskendev.com/">
+<meta property="og:image" content="https://itskendev.com/og.png"><!-- ✏️ add a real 1200×630 image -->
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kendrick Lucena",
+  "jobTitle": "Full-Stack Developer & Software Support Specialist",
+  "url": "https://itskendev.com",
+  "email": "mailto:itskendev@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "San Pedro", "addressRegion": "Laguna", "addressCountry": "PH" },
+  "sameAs": [
+    "https://github.com/Ken-dev-cmd",
+    "https://linkedin.com/in/itskendev",
+    "https://x.com/itskendev",
+    "https://stackoverflow.com/users/000000/itskendev"
+  ],
+  "knowsAbout": ["Full-stack web development","React","Node.js","TypeScript","PostgreSQL","Incident management","Technical documentation","Root-cause analysis"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ Theme tokens ============ */
+:root, :root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0a0a0f; --bg-elev:#101016; --card:#12121b;
+  --border:rgba(255,255,255,.09); --border-strong:rgba(255,255,255,.17);
+  --text:#eceef2; --text-2:#a7aab6; --text-3:#70737f;
+  --accent:#10b981; --accent-text:#34d399;
+  --accent-soft:rgba(16,185,129,.12); --accent-glow:rgba(16,185,129,.30);
+  --accent-fill:#10b981; --accent-on:#071a12;
+  --ok:#34d399; --err:#f87171;
+  --grid:rgba(255,255,255,.05); --pattern:rgba(255,255,255,.028);
+  --bar-track:rgba(255,255,255,.08); --hover:rgba(255,255,255,.05);
+  --nav-bg:rgba(10,10,15,.72); --shadow:0 14px 40px rgba(0,0,0,.35);
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg:#f6f7f9; --bg-elev:#ffffff; --card:#ffffff;
+  --border:rgba(15,18,25,.10); --border-strong:rgba(15,18,25,.20);
+  --text:#16181d; --text-2:#4d515c; --text-3:#83868f;
+  --accent:#10b981; --accent-text:#047857;
+  --accent-soft:rgba(5,150,105,.10); --accent-glow:rgba(5,150,105,.22);
+  --accent-fill:#047857; --accent-on:#ffffff;
+  --ok:#059669; --err:#dc2626;
+  --grid:rgba(15,18,25,.06); --pattern:rgba(15,18,25,.035);
+  --bar-track:rgba(15,18,25,.10); --hover:rgba(15,18,25,.05);
+  --nav-bg:rgba(246,247,249,.80); --shadow:0 14px 40px rgba(20,24,32,.10);
+}
+
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.65;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.18;letter-spacing:-.02em;margin:0}
+p{margin:0 0 1em}
+a{color:inherit;text-decoration:none}
+ul{margin:0}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace}
+.container{width:min(1120px,100% - 3rem);margin-inline:auto}
+@media(max-width:640px){.container{width:calc(100% - 2rem)}}
+::selection{background:var(--accent);color:#071a12}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+body.lock{overflow:hidden}
+.ic{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.skip{position:absolute;left:1rem;top:-60px;z-index:200;background:var(--accent-fill);color:var(--accent-on);
+  padding:.6rem 1rem;border-radius:8px;font-weight:600;transition:top .2s}
+.skip:focus{top:1rem}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* Smooth theme swap (applied only briefly during toggle) */
+.theme-anim,.theme-anim *,.theme-anim *::before,.theme-anim *::after{
+  transition:background-color .3s ease,border-color .3s ease,color .3s ease !important}
+
+/* ============ Buttons ============ */
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:"Space Grotesk";font-weight:600;
+  font-size:.95rem;padding:.72rem 1.3rem;border-radius:11px;border:1px solid transparent;cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s,border-color .18s,color .18s}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent-fill);color:var(--accent-on);box-shadow:0 6px 22px var(--accent-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px var(--accent-glow)}
+.btn-outline{border-color:var(--border-strong);color:var(--text);background:transparent}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent-text);background:var(--accent-soft);transform:translateY(-2px)}
+.btn-sm{padding:.45rem .85rem;font-size:.85rem;border-radius:9px}
+.icon-btn{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;cursor:pointer;
+  border:1px solid var(--border-strong);background:transparent;color:var(--text-2);transition:all .18s}
+.icon-btn:hover{color:var(--accent-text);border-color:var(--accent);background:var(--accent-soft)}
+[data-theme="dark"] .i-moon{display:none}
+[data-theme="light"] .i-sun{display:none}
+[aria-expanded="true"] .i-open{display:none}
+[aria-expanded="false"] .i-close{display:none}
+
+/* ============ Nav ============ */
+.nav{position:sticky;top:0;z-index:60;background:var(--nav-bg);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;gap:1rem;height:64px}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:"Space Grotesk";font-weight:700;font-size:1.02rem}
+.logo-mark{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;flex:none;
+  background:var(--accent-soft);border:1px solid var(--accent);color:var(--accent-text);
+  font-family:"JetBrains Mono";font-size:.78rem}
+@media(max-width:430px){.logo-text{display:none}}
+.nav-links{display:flex;gap:.15rem;list-style:none;margin-left:auto;padding:0}
+.nav-links a{padding:.45rem .7rem;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--text-2);transition:all .15s}
+.nav-links a:hover{color:var(--text);background:var(--hover)}
+.nav-links a.active{color:var(--accent-text);background:var(--accent-soft)}
+.nav-actions{display:flex;gap:.6rem;align-items:center}
+.nav-toggle{display:none}
+@media(max-width:940px){
+  .nav-toggle{display:grid}
+  .nav-links{position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:.15rem;
+    background:var(--bg-elev);border-bottom:1px solid var(--border);padding:.9rem 1.4rem 1.2rem;
+    display:none;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem;padding:.7rem .75rem} /* comfortable tap targets */
+}
+
+/* ============ Hero ============ */
+.hero{position:relative;overflow:hidden;display:flex;align-items:center;
+  padding:4.5rem 0 5rem;min-height:calc(100vh - 64px);min-height:calc(100svh - 64px)}
+.hero-bg{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,black 25%,transparent 72%);
+  mask-image:radial-gradient(ellipse 85% 65% at 50% 0%,black 25%,transparent 72%)}
+.hero-glow{position:absolute;top:-180px;right:-120px;width:520px;height:520px;pointer-events:none;
+  background:radial-gradient(circle,var(--accent-soft) 0%,transparent 65%);filter:blur(10px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;position:relative}
+@media(max-width:960px){.hero{min-height:auto;padding:4rem 0 4.5rem}
+  .hero-grid{grid-template-columns:1fr;gap:2.75rem}}
+.hero h1{font-size:clamp(2.25rem,5vw,3.55rem);margin:1.2rem 0 1.1rem}
+.hero h1 .accent{color:var(--accent-text)}
+.hero-sub{color:var(--text-2);font-size:1.08rem;max-width:34rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.9rem}
+.hero-hint{margin-top:1.7rem;color:var(--text-3);font-family:"JetBrains Mono";font-size:.76rem}
+kbd{border:1px solid var(--border-strong);border-bottom-width:2px;border-radius:5px;
+  padding:.08rem .4rem;background:var(--bg-elev);font-family:"JetBrains Mono";font-size:.9em}
+.badge-avail{display:inline-flex;align-items:center;gap:.55rem;padding:.42rem .9rem;border-radius:999px;
+  border:1px solid var(--border-strong);background:var(--bg-elev);
+  font-family:"JetBrains Mono";font-size:.76rem;color:var(--text-2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);position:relative;flex:none}
+.dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--ok);
+  animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(2.6);opacity:0}}
+
+/* Terminal (stays dark in both themes — like a real one) */
+.terminal{background:#0d0f14;border:1px solid rgba(255,255,255,.13);border-radius:15px;
+  box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(16,185,129,.06);
+  overflow:hidden;font-family:"JetBrains Mono"}
+.term-bar{display:flex;align-items:center;gap:.45rem;padding:.65rem .95rem;
+  background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.08)}
+.tdot{width:11px;height:11px;border-radius:50%}
+.term-title{margin-left:auto;margin-right:auto;color:#8b93a7;font-size:.72rem}
+.term-body{padding:1.15rem 1.2rem;font-size:.84rem;line-height:1.8;min-height:14.5em;color:#cdd3e0}
+.tline{white-space:pre-wrap;word-break:break-word}
+.tline .pfx{margin-right:.65em}
+.tline.cmd .pfx{color:#34d399;font-weight:600}
+.tline.out{color:#9aa3b5}
+.tline.out .pfx{color:#5c6478}
+.tline.ok{color:#34d399}
+.tline.out,.tline.ok{animation:termIn .4s ease both}
+@keyframes termIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.tcur{display:inline-block;width:8px;height:1.05em;background:#34d399;margin-left:2px;
+  vertical-align:text-bottom;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ============ Sections ============ */
+.section{padding:5.5rem 0;border-top:1px solid var(--border)}
+.section-head{max-width:640px;margin-bottom:2.75rem}
+.eyebrow{font-family:"JetBrains Mono";font-size:.78rem;color:var(--accent-text);letter-spacing:.04em}
+.section-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem);margin:.55rem 0 .65rem}
+.section-sub{color:var(--text-2);margin:0}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(18px);
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ About ============ */
+.about-grid{display:grid;grid-template-columns:330px 1fr;gap:3.5rem;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-photo{max-width:330px;margin-inline:auto}}
+.avatar{aspect-ratio:1;border-radius:22px;background:var(--bg-elev);border:1px solid var(--border-strong);
+  display:grid;place-items:center;position:relative;overflow:hidden}
+.avatar::before{content:'';position:absolute;inset:-40%;
+  background:radial-gradient(circle,var(--accent-soft) 0%,transparent 60%)}
+.avatar .frame{position:absolute;inset:13px;border:1px dashed var(--border-strong);border-radius:15px}
+.avatar .initials{font-family:"Space Grotesk";font-size:4.3rem;font-weight:700;color:var(--accent-text)}
+.avatar .tag{position:absolute;bottom:16px;left:0;right:0;text-align:center;
+  font-family:"JetBrains Mono";font-size:.7rem;color:var(--text-3)}
+.about-text p{color:var(--text-2)}
+.about-quote{border-left:3px solid var(--accent);padding:.2rem 0 .2rem 1.1rem;margin:1.4rem 0 0;
+  font-family:"Space Grotesk";font-weight:600;font-size:1.12rem;color:var(--text)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.4rem}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.15rem 1.25rem}
+.stat b{display:block;font-family:"Space Grotesk";font-size:1.9rem;line-height:1.15;color:var(--accent-text)}
+.stat span{font-size:.8rem;color:var(--text-3);font-family:"JetBrains Mono"}
+
+/* ============ Skills (bento) ============ */
+.group-label{display:flex;align-items:center;gap:.7rem;margin:2.4rem 0 1.1rem;
+  font-family:"JetBrains Mono";font-size:.78rem;color:var(--text-2);
+  text-transform:uppercase;letter-spacing:.14em}
+.group-label .ic{width:16px;height:16px;color:var(--accent-text)}
+.group-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.skills-grid{display:grid;gap:1rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.skills-grid{grid-template-columns:repeat(6,1fr)}
+  .sg-3{grid-column:span 3}.sg-2{grid-column:span 2}}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.45rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s}
+.skill-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}
+.skill-card h3{display:flex;gap:.65rem;align-items:center;font-size:1.03rem;margin-bottom:1.1rem}
+.sc-icon{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);
+  color:var(--accent-text);display:grid;place-items:center;flex:none}
+.sc-icon .ic{width:17px;height:17px}
+.skill{margin-bottom:.9rem}
+.skill:last-child{margin-bottom:0}
+.skill-meta{display:flex;justify-content:space-between;align-items:baseline;font-size:.86rem;margin-bottom:.32rem}
+.skill-meta .lvl{font-family:"JetBrains Mono";font-size:.66rem;color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.07em}
+.bar{height:6px;border-radius:99px;background:var(--bar-track);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-text));
+  transition:width 1.1s cubic-bezier(.22,1,.36,1) .25s}
+.reveal.in .bar i{width:var(--w)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+.chip{font-family:"JetBrains Mono";font-size:.74rem;padding:.32rem .6rem;border-radius:7px;
+  border:1px solid var(--border-strong);color:var(--text-2);background:var(--bg-elev)}
+.skill-card>p{color:var(--text-2);font-size:.88rem;margin:0}
+
+/* ============ Services ============ */
+.services-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.service{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.55rem;
+  transition:transform .22s,border-color .22s,box-shadow .22s}
+.service:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow)}
+.service .sc-icon{width:42px;height:42px;margin-bottom:1rem}
+.service .sc-icon .ic{width:20px;height:20px}
+.service h3{font-size:1.04rem;margin-bottom:.45rem}
+.service p{color:var(--text-2);font-size:.9rem;margin:0}
+
+/* ============ Projects ============ */
+.proj-featured{display:grid;grid-template-columns:1.05fr 1fr;background:var(--card);
+  border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:1.5rem}
+@media(max-width:880px){.proj-featured{grid-template-columns:1fr}}
+.pf-art{padding:2.2rem 1.8rem;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--accent-soft),transparent 70%),var(--bg-elev);
+  border-right:1px solid var(--border)}
+@media(max-width:880px){.pf-art{border-right:none;border-bottom:1px solid var(--border)}}
+.pf-body{padding:2rem}
+.pf-body h3{font-size:1.5rem;margin:.5rem 0 .6rem}
+.pf-body p{color:var(--text-2);font-size:.95rem}
+.pf-list{list-style:none;padding:0;margin:1.1rem 0 0;display:grid;gap:.45rem}
+.pf-list li{display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;color:var(--text-2)}
+.pf-list .ic{width:16px;height:16px;color:var(--accent-text);margin-top:.25rem}
+.featured-chip{display:inline-flex;font-family:"JetBrains Mono";font-size:.68rem;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--accent-text);
+  background:var(--accent-soft);border-radius:6px;padding:.25rem .55rem}
+.proj-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.proj{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .22s,border-color .22s,box-shadow .22s}
+.proj:hover{transform:translateY(-5px);border-color:var(--accent);
+  box-shadow:0 18px 40px rgba(0,0,0,.28),0 0 26px var(--accent-glow)}
+.proj-art{height:150px;position:relative;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--accent-soft),transparent 65%),var(--bg-elev);
+  border-bottom:1px solid var(--border)}
+.proj-art::before{content:'';position:absolute;inset:0;
+  background-image:repeating-linear-gradient(-45deg,transparent 0 12px,var(--pattern) 12px 13px)}
+.glyph{font-family:"JetBrains Mono";font-size:2rem;color:var(--accent-text);opacity:.8;position:relative}
+.proj-art .idx{position:absolute;top:.8rem;right:1rem;font-family:"JetBrains Mono";
+  font-size:.68rem;color:var(--text-3)}
+.proj-body{padding:1.3rem 1.35rem 1.35rem;display:flex;flex-direction:column;gap:.65rem;flex:1}
+.proj-body h3{font-size:1.06rem}
+.proj-body>p{color:var(--text-2);font-size:.89rem;margin:0;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:"JetBrains Mono";font-size:.68rem;color:var(--accent-text);
+  background:var(--accent-soft);border-radius:6px;padding:.22rem .5rem}
+.proj-links{display:flex;gap:1.2rem;margin-top:.15rem}
+.plink{display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;
+  color:var(--text-2);transition:color .15s}
+.plink:hover{color:var(--accent-text)}
+.plink .ic{width:15px;height:15px}
+
+/* Mini dashboard mock (featured project art) */
+.dash{width:100%;max-width:430px;background:#0e1118;border:1px solid rgba(255,255,255,.11);
+  border-radius:14px;padding:1rem;font-family:"JetBrains Mono";font-size:.72rem;color:#cdd3e0;
+  box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.dash-chip{color:#34d399}
+.dash-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.8rem}
+.dash-stat{border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.5rem .55rem;background:rgba(255,255,255,.02)}
+.dash-stat b{display:block;font-size:1rem;color:#e8ecf2}
+.dash-stat span{color:#78808f;font-size:.6rem;text-transform:uppercase;letter-spacing:.05em}
+.dash-chart{border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.65rem .6rem .5rem;background:rgba(255,255,255,.02)}
+.spark{width:100%;height:38px;display:block}
+.spark polyline{fill:none;stroke:#34d399;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dash-bars{display:flex;gap:6px;margin-top:.55rem;align-items:flex-end;height:32px}
+.dash-bars i{flex:1;background:rgba(52,211,153,.4);border-radius:3px 3px 0 0;height:var(--h)}
+
+/* ============ Experience timeline ============ */
+.timeline{position:relative;max-width:880px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:var(--border-strong);transform:translateX(-50%)}
+.tl-item{position:relative;width:50%;padding:0 2.5rem 2.4rem 0}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 2.4rem 2.5rem}
+.tl-item::before{content:'';position:absolute;top:8px;width:13px;height:13px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--accent);z-index:1}
+.tl-item:nth-child(odd)::before{right:-7px}
+.tl-item:nth-child(even)::before{left:-7px}
+@media(max-width:760px){
+  .timeline::before{left:14px;transform:none}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 2rem 2.6rem}
+  .tl-item:nth-child(odd)::before,.tl-item:nth-child(even)::before{left:8px;right:auto}
+}
+.tl-card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:1.45rem 1.55rem;transition:transform .22s,border-color .22s,box-shadow .22s}
+.tl-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}
+.tl-head{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.tl-role{font-family:"Space Grotesk";font-weight:600;font-size:1.06rem}
+.tl-org{color:var(--accent-text);font-size:.9rem;font-weight:500}
+.tl-dates{font-family:"JetBrains Mono";font-size:.7rem;color:var(--text-3);white-space:nowrap}
+.tl-kind{font-family:"JetBrains Mono";font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--text-3);border:1px solid var(--border-strong);border-radius:5px;padding:.12rem .4rem;margin-left:.5rem}
+.tl-card ul{margin:.95rem 0 0;padding-left:1.15rem;color:var(--text-2);font-size:.89rem;display:grid;gap:.35rem}
+
+/* ============ Testimonials ============ */
+.testi-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.testi{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;
+  position:relative;transition:transform .22s,border-color .22s}
+.testi:hover{transform:translateY(-3px);border-color:var(--accent)}
+.testi::before{content:'“';position:absolute;top:.7rem;right:1.1rem;font-family:"Space Grotesk";
+  font-size:3.2rem;line-height:1;color:var(--accent);opacity:.28}
+.testi blockquote{margin:0 0 1.3rem;color:var(--text);font-size:.94rem;line-height:1.62}
+.testi-who{display:flex;align-items:center;gap:.8rem}
+.ava{width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  display:grid;place-items:center;font-weight:600;font-family:"Space Grotesk";font-size:.85rem;flex:none}
+.testi-name{font-weight:600;font-size:.92rem}
+.testi-role{color:var(--text-3);font-size:.78rem}
+
+/* ============ Contact ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
+.contact-copy p{color:var(--text-2)}
+.cinfo-list{list-style:none;padding:0;margin:1.9rem 0 0;display:grid;gap:1rem}
+.cinfo{display:flex;gap:.85rem;align-items:center;color:var(--text-2);font-size:.93rem}
+.cinfo .ic{color:var(--accent-text)}
+.cinfo a{color:var(--text);border-bottom:1px dashed var(--border-strong);word-break:break-all}
+.cinfo a:hover{color:var(--accent-text);border-color:var(--accent)}
+.cinfo .lbl{font-family:"JetBrains Mono";font-size:.68rem;color:var(--text-3);
+  text-transform:uppercase;letter-spacing:.1em;display:block}
+.socials{display:flex;gap:.75rem;margin-top:2rem}
+.soc{width:44px;height:44px;border-radius:11px;border:1px solid var(--border-strong);
+  display:grid;place-items:center;color:var(--text-2);transition:all .18s}
+.soc:hover{color:var(--accent-text);border-color:var(--accent);background:var(--accent-soft);transform:translateY(-3px)}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem}
+.field{margin-bottom:1.15rem}
+.field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.4rem}
+.field input,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border-strong);
+  border-radius:10px;padding:.75rem .9rem;color:var(--text);font:inherit;font-size:1rem;
+  transition:border-color .15s,box-shadow .15s}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-3)}
+.field-msg{display:none;color:var(--err);font-size:.78rem;margin-top:.35rem}
+.field.err input,.field.err textarea{border-color:var(--err)}
+.field.err .field-msg{display:block}
+.form-success{display:none;text-align:center;padding:2.6rem 1rem}
+form.sent .form-fields,form.sent .form-note{display:none}
+form.sent .form-success{display:block}
+.success-ic{width:60px;height:60px;border-radius:50%;background:var(--accent-soft);
+  color:var(--accent-text);display:grid;place-items:center;margin:0 auto 1.2rem}
+.success-ic .ic{width:28px;height:28px}
+.form-success h3{margin-bottom:.4rem}
+.form-success p{color:var(--text-2);font-size:.92rem}
+.form-note{font-family:"JetBrains Mono";font-size:.7rem;color:var(--text-3);margin-top:1rem}
+
+/* ============ Footer ============ */
+footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
+.foot{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;align-items:center;justify-content:space-between;
+  color:var(--text-3);font-size:.85rem}
+.foot small{font-family:"JetBrains Mono";font-size:.72rem}
+.foot-status{display:inline-flex;align-items:center;gap:.5rem;font-family:"JetBrains Mono";
+  font-size:.72rem;color:var(--text-2);border:1px solid var(--border);
+  padding:.38rem .8rem;border-radius:99px}
+#back-to-top{position:fixed;right:1.25rem;bottom:1.25rem;width:44px;height:44px;border-radius:12px;
+  background:var(--accent-fill);color:var(--accent-on);border:none;cursor:pointer;
+  display:grid;place-items:center;opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .25s,transform .25s,box-shadow .25s;z-index:70;box-shadow:0 10px 26px var(--accent-glow)}
+#back-to-top.show{opacity:1;transform:none;pointer-events:auto}
+#back-to-top:hover{transform:translateY(-3px)}
+
+/* ============ Command palette ( / or Ctrl+K ) ============ */
+.pal-back{position:fixed;inset:0;z-index:100;background:rgba(5,5,10,.6);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  display:flex;align-items:flex-start;justify-content:center;padding:12vh 1rem 0;
+  opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.pal-back.open{opacity:1;visibility:visible}
+.pal{width:100%;max-width:530px;background:var(--bg-elev);border:1px solid var(--border-strong);
+  border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;
+  transform:translateY(-10px) scale(.98);transition:transform .2s}
+.pal-back.open .pal{transform:none}
+.pal-head{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--border)}
+.pal-head .ic{color:var(--accent-text)}
+#pal-input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--text);
+  font-family:"JetBrains Mono";font-size:.95rem}
+#pal-input::placeholder{color:var(--text-3)}
+.pal-kbd{font-family:"JetBrains Mono";font-size:.66rem;color:var(--text-3);
+  border:1px solid var(--border-strong);border-radius:5px;padding:.1rem .35rem}
+.pal-list{list-style:none;margin:0;padding:.5rem;max-height:320px;overflow:auto}
+.pal-item button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.62rem .8rem;border-radius:9px;background:none;border:none;color:var(--text-2);
+  font:inherit;font-size:.92rem;cursor:pointer;text-align:left}
+.pal-item.sel button{background:var(--accent-soft);color:var(--text)}
+.pal-hint{font-family:"JetBrains Mono";font-size:.66rem;color:var(--text-3);
+  border:1px solid var(--border-strong);border-radius:5px;padding:.1rem .4rem;flex:none}
+.pal-empty{padding:1.1rem;color:var(--text-3);font-family:"JetBrains Mono";font-size:.82rem;text-align:center}
+.pal-foot{padding:.6rem 1.1rem;border-top:1px solid var(--border);color:var(--text-3);
+  font-size:.72rem;font-family:"JetBrains Mono";display:flex;gap:1.2rem;flex-wrap:wrap}
+
+/* ============ Toast ============ */
+#toast{position:fixed;bottom:1.5rem;left:50%;transform:translate(-50%,10px);z-index:120;
+  background:var(--bg-elev);border:1px solid var(--accent);color:var(--text);
+  padding:.62rem 1.15rem;border-radius:99px;font-family:"JetBrains Mono";font-size:.8rem;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:var(--shadow);
+  max-width:calc(100vw - 2rem);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ Mobile refinements ============ */
+@media(max-width:640px){
+  .section{padding:4rem 0}
+  .section-head{margin-bottom:2rem}
+  .hero{padding:3.2rem 0 3.6rem}
+  .hero-grid{gap:2.4rem}
+  .hero-sub{font-size:1rem}
+  .hero-cta{gap:.75rem}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center} /* full-width stacked CTAs */
+  .hero-glow{width:340px;height:340px;top:-140px;right:-160px}
+  .term-body{font-size:.78rem;min-height:12em;padding:1rem 1.05rem}
+  .pf-art{padding:1.6rem 1.2rem}
+  .pf-body{padding:1.5rem}
+  .pf-body h3{font-size:1.3rem}
+  .skill-card{padding:1.2rem}
+  .service{padding:1.3rem}
+  .stat{padding:1rem 1.05rem}
+  .stat b{font-size:1.65rem}
+  .tl-card{padding:1.15rem 1.25rem}
+  .testi{padding:1.3rem}
+  .form-card{padding:1.4rem}
+  .group-label{margin:1.9rem 0 .9rem}
+  #pal-input{font-size:1rem} /* 16px — no iOS focus zoom */
+  .pal-back{padding-top:7vh}
+  .pal-list{max-height:44vh}
+}
+
+/* ============ Reduced motion ============ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+
+<noscript><style>
+  .reveal{opacity:1;transform:none}
+  .bar i{width:var(--w)}
+  .pal-back{display:none}
+  .nav-toggle{display:none!important}
+  @media(max-width:940px){.nav-links{display:flex!important;position:static!important;
+    flex-direction:row!important;flex-wrap:wrap;background:none;border:none;box-shadow:none;padding:0}}
+</style></noscript>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- SVG icon sprite -->
+<svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  <symbol id="i-life" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.73-2.09.1-3l-2.1-2.1a2.13 2.13 0 0 0-3 .6z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-xlogo" viewBox="0 0 24 24"><path style="fill:currentColor;stroke:none" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+</svg>
+
+<!-- ============ Navigation ============ -->
+<header class="nav">
+  <nav class="nav-inner container" aria-label="Primary">
+    <a class="logo" href="#home" aria-label="Kendrick Lucena — home">
+      <span class="logo-mark" aria-hidden="true">KL</span>
+      <span class="logo-text">itskendev</span>
+    </a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark / light theme" aria-pressed="false">
+        <svg class="ic i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="ic i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <!-- ✏️ CUSTOMIZE: point this at your real CV file -->
+      <a class="btn btn-sm btn-outline" id="cv-btn" href="Kendrick-Lucena-CV.pdf" download>
+        <svg class="ic" style="width:15px;height:15px" aria-hidden="true"><use href="#i-download"/></svg> CV
+      </a>
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <svg class="ic i-open" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="ic i-close" aria-hidden="true"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="badge-avail reveal"><span class="dot" aria-hidden="true"></span>available for new projects</span>
+      <h1 class="reveal" tabindex="-1">I build full-stack solutions — <span class="accent">and stand behind what I ship.</span></h1>
+      <p class="hero-sub reveal">Full-stack developer &amp; software support specialist. I write the code, ship it, and stick around to fix it — turning real user problems into better software.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#projects">View Projects
+          <svg class="ic" style="width:16px;height:16px" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+      <p class="hero-hint reveal">psst — press <kbd>/</kbd> or <kbd>ctrl</kbd>+<kbd>k</kbd> to jump anywhere</p>
+    </div>
+
+    <div class="hero-terminal reveal" aria-label="Animated terminal demo">
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="tdot" style="background:#ff5f57"></span>
+          <span class="tdot" style="background:#febc2e"></span>
+          <span class="tdot" style="background:#28c840"></span>
+          <span class="term-title">kendrick@dev — zsh</span>
+        </div>
+        <div class="term-body" id="term-body">
+          <div class="tline cmd"><span class="pfx">$</span><span class="txt">whoami</span></div>
+          <div class="tline out"><span class="pfx">›</span><span class="txt">kendrick · full-stack dev &amp; support specialist</span></div>
+          <div class="tline cmd"><span class="pfx">$</span><span class="txt">cat stack.txt</span></div>
+          <div class="tline out"><span class="pfx">›</span><span class="txt">react · typescript · node · postgres · docker</span></div>
+          <div class="tline cmd"><span class="pfx">$</span><span class="txt">./deploy --production</span></div>
+          <div class="tline ok"><span class="pfx"></span><span class="txt">✓ deployed · monitoring · 0 open incidents</span></div>
+          <div class="tline cmd"><span class="pfx">$</span><span class="txt">uptime --smug</span></div>
+          <div class="tline out"><span class="pfx">›</span><span class="txt">99.9% — still standing</span></div>
+          <div class="tline cmd"><span class="pfx">$</span><span class="tcur"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ About ============ -->
+<section class="section" id="about" aria-label="About">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/about</span>
+      <h2 tabindex="-1">Both sides of the ticket.</h2>
+      <p class="section-sub">Most developers hand software off and move on. I've lived on both sides of that handoff.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        <!-- ✏️ CUSTOMIZE: swap this placeholder for a real photo -->
+        <div class="avatar" role="img" aria-label="Portrait placeholder for Kendrick Lucena">
+          <span class="frame" aria-hidden="true"></span>
+          <span class="initials" aria-hidden="true">KL</span>
+          <span class="tag">swap in your photo →</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p>For the last six years I've built full-stack applications — then worked the tickets, incidents, and 2 a.m. escalations that followed them. That loop made me a strange kind of engineer: one who designs APIs while thinking about the support engineer who'll debug them at 3 a.m., and the user who just needs the thing to <em>work</em>.</p>
+        <p>The result is software that's easier to deploy, easier to document, and dramatically easier to stand behind. When something breaks, I don't guess — I read logs, reproduce, root-cause, fix, and write down what happened so it never happens the same way twice.</p>
+        <blockquote class="about-quote">"I don't just build it — I stand behind it."</blockquote>
+        <!-- ✏️ CUSTOMIZE: your real numbers -->
+        <div class="stats">
+          <div class="stat"><b>6+</b><span>years shipping &amp; supporting</span></div>
+          <div class="stat"><b>40+</b><span>projects delivered</span></div>
+          <div class="stat"><b>3.5k+</b><span>tickets resolved · 95% CSAT</span></div>
+          <div class="stat"><b>12</b><span>systems kept alive</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Skills ============ -->
+<section class="section" id="skills" aria-label="Skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/skills</span>
+      <h2 tabindex="-1">Two toolbelts, one brain.</h2>
+      <p class="section-sub">Everything I use to build software — and everything I use to keep it alive.</p>
+    </div>
+
+    <p class="group-label reveal"><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg>development</p>
+    <div class="skills-grid">
+      <div class="skill-card sg-3 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-monitor"/></svg></span>Frontend</h3>
+        <div class="skill"><div class="skill-meta"><span>React</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="React proficiency: Expert"><i style="--w:90%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>JavaScript / HTML / CSS</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="JavaScript, HTML and CSS proficiency: Expert"><i style="--w:95%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Tailwind CSS</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Tailwind CSS proficiency: Expert"><i style="--w:92%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>TypeScript</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="TypeScript proficiency: Advanced"><i style="--w:85%"></i></div></div>
+      </div>
+      <div class="skill-card sg-3 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-server"/></svg></span>Backend</h3>
+        <div class="skill"><div class="skill-meta"><span>Node.js</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Node.js proficiency: Expert"><i style="--w:88%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>REST &amp; GraphQL APIs</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="REST and GraphQL proficiency: Advanced"><i style="--w:86%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Python</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Python proficiency: Advanced"><i style="--w:80%"></i></div></div>
+      </div>
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-database"/></svg></span>Data &amp; Cloud</h3>
+        <div class="skill"><div class="skill-meta"><span>PostgreSQL</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="PostgreSQL proficiency: Advanced"><i style="--w:84%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>MongoDB</span><span class="lvl">Proficient</span></div><div class="bar" role="img" aria-label="MongoDB proficiency: Proficient"><i style="--w:76%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>AWS</span><span class="lvl">Proficient</span></div><div class="bar" role="img" aria-label="AWS proficiency: Proficient"><i style="--w:74%"></i></div></div>
+      </div>
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-terminal"/></svg></span>Toolchain</h3>
+        <div class="skill"><div class="skill-meta"><span>Git</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Git proficiency: Expert"><i style="--w:92%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Linux</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Linux proficiency: Advanced"><i style="--w:84%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Docker · CI/CD</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Docker and CI/CD proficiency: Advanced"><i style="--w:79%"></i></div></div>
+      </div>
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span>Currently learning</h3>
+        <p>Deliberately making my future self uncomfortable:</p>
+        <div class="chips">
+          <span class="chip">rust</span><span class="chip">kubernetes</span>
+          <span class="chip">opentelemetry</span><span class="chip">ai-assisted triage</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="group-label reveal"><svg class="ic" aria-hidden="true"><use href="#i-life"/></svg>software support</p>
+    <div class="skills-grid">
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span>Troubleshooting &amp; RCA</h3>
+        <div class="skill"><div class="skill-meta"><span>Root-cause analysis</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Root-cause analysis proficiency: Expert"><i style="--w:90%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Production debugging</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Production debugging proficiency: Expert"><i style="--w:88%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Remote support</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Remote support proficiency: Advanced"><i style="--w:86%"></i></div></div>
+      </div>
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>Support Operations</h3>
+        <div class="skill"><div class="skill-meta"><span>Zendesk · Jira · Freshdesk</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Ticketing systems proficiency: Expert"><i style="--w:90%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>SLA &amp; incident mgmt</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="SLA and incident management proficiency: Expert"><i style="--w:88%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Escalation handling</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Escalation handling proficiency: Advanced"><i style="--w:85%"></i></div></div>
+      </div>
+      <div class="skill-card sg-2 reveal">
+        <h3><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span>Docs &amp; Communication</h3>
+        <div class="skill"><div class="skill-meta"><span>Knowledge bases</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Knowledge bases proficiency: Expert"><i style="--w:92%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Customer communication</span><span class="lvl">Expert</span></div><div class="bar" role="img" aria-label="Customer communication proficiency: Expert"><i style="--w:90%"></i></div></div>
+        <div class="skill"><div class="skill-meta"><span>Technical writing</span><span class="lvl">Advanced</span></div><div class="bar" role="img" aria-label="Technical writing proficiency: Advanced"><i style="--w:88%"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Services ============ -->
+<section class="section" id="services" aria-label="Services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/services</span>
+      <h2 tabindex="-1">What I can do for you</h2>
+      <p class="section-sub">Build it, rescue it, or explain it — ideally all three in the right order.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg></span>
+        <h3>Full-Stack Web Development</h3><p>End-to-end web apps: pixel-accurate frontends, resilient APIs, and the unglamorous glue in between.</p></div>
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-life"/></svg></span>
+        <h3>Support &amp; Maintenance</h3><p>SLAs, monitoring, and long-term care for software I (or your team) built — months after launch day.</p></div>
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span>
+        <h3>Troubleshooting &amp; Debugging</h3><p>Root-cause analysis on production issues. Bugs found, fixed, and documented so they stay gone.</p></div>
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span>
+        <h3>Technical Documentation</h3><p>Runbooks, knowledge bases, and docs your future self — and your support queue — will thank you for.</p></div>
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg></span>
+        <h3>Deployment &amp; DevOps Setup</h3><p>CI/CD pipelines, Docker, and cloud deploys that go into production bump-free — with rollbacks ready.</p></div>
+      <div class="service reveal"><span class="sc-icon"><svg class="ic" aria-hidden="true"><use href="#i-msg"/></svg></span>
+        <h3>Consultation &amp; Code Review</h3><p>A second pair of eyes: architecture reviews, support-process audits, and honest feedback.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Projects ============ -->
+<section class="section" id="projects" aria-label="Projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/projects</span>
+      <h2 tabindex="-1">Things I've shipped (and supported)</h2>
+      <p class="section-sub">A sample — including the support-side tooling that keeps the rest honest.</p>
+    </div>
+
+    <!-- ✏️ CUSTOMIZE: your featured project -->
+    <article class="proj-featured reveal">
+      <div class="pf-art" aria-hidden="true">
+        <div class="dash">
+          <div class="dash-top"><span>pulsedesk · live</span><span class="dash-chip">● operational</span></div>
+          <div class="dash-stats">
+            <div class="dash-stat"><b>12</b><span>open</span></div>
+            <div class="dash-stat"><b>98.2%</b><span>sla</span></div>
+            <div class="dash-stat"><b>4m</b><span>mttr</span></div>
+          </div>
+          <div class="dash-chart">
+            <svg class="spark" viewBox="0 0 200 40" preserveAspectRatio="none"><polyline points="0,32 20,27 40,29 60,18 80,23 100,12 120,17 140,8 160,11 180,4 200,7"/></svg>
+            <div class="dash-bars">
+              <i style="--h:40%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:82%"></i><i style="--h:54%"></i><i style="--h:95%"></i><i style="--h:70%"></i><i style="--h:44%"></i><i style="--h:88%"></i><i style="--h:58%"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pf-body">
+        <span class="featured-chip">★ featured</span>
+        <h3>PulseDesk — Support Intelligence Platform</h3>
+        <p>A dashboard that pulls Zendesk, Jira and Freshdesk data into one live view: SLA burn-downs, incident timelines, and agent load. Built because I got tired of stitching CSV exports together at 2 a.m.</p>
+        <ul class="pf-list">
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Cut median first-response time by 38% across pilot teams</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Live SLA + incident view adopted by 12 support teams</li>
+        </ul>
+        <div class="tags" style="margin-top:1.1rem">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">WebSockets</span>
+        </div>
+        <div class="proj-links" style="margin-top:1rem">
+          <a class="plink" href="#" aria-label="PulseDesk live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live demo</a>
+          <a class="plink" href="#" aria-label="PulseDesk source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="proj-grid">
+      <!-- ✏️ CUSTOMIZE: your projects (titles, descriptions, links) -->
+      <article class="proj reveal">
+        <div class="proj-art" aria-hidden="true"><span class="glyph">⇄</span><span class="idx">02</span></div>
+        <div class="proj-body">
+          <h3>ShipTrack</h3>
+          <p>Real-time shipment tracking for a mid-size logistics firm — live map, webhook alerts, and a driver mobile view.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">WebSockets</span></div>
+          <div class="proj-links">
+            <a class="plink" href="#" aria-label="ShipTrack live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live</a>
+            <a class="plink" href="#" aria-label="ShipTrack source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art" aria-hidden="true"><span class="glyph">▲</span><span class="idx">03</span></div>
+        <div class="proj-body">
+          <h3>UptimePulse</h3>
+          <p>Featherweight status page + uptime monitor with incident timelines and subscribe-by-email. Runs happily on a $5 VPS.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Express</span><span class="tag">PostgreSQL</span><span class="tag">Cron</span></div>
+          <div class="proj-links">
+            <a class="plink" href="#" aria-label="UptimePulse live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live</a>
+            <a class="plink" href="#" aria-label="UptimePulse source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art" aria-hidden="true"><span class="glyph">{ }</span><span class="idx">04</span></div>
+        <div class="proj-body">
+          <h3>DocsHub</h3>
+          <p>Internal knowledge base with instant full-text search, versioning, and "docs drift" alerts when code changes outpace the docs.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">SQLite</span><span class="tag">Meilisearch</span></div>
+          <div class="proj-links">
+            <a class="plink" href="#" aria-label="DocsHub live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live</a>
+            <a class="plink" href="#" aria-label="DocsHub source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art" aria-hidden="true"><span class="glyph">$</span><span class="idx">05</span></div>
+        <div class="proj-body">
+          <h3>deploydog</h3>
+          <p>Zero-config deployment CLI: one command builds, containerizes, and ships to any VPS — rollback and health checks built in.</p>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">Docker</span><span class="tag">Bash</span><span class="tag">SSH</span></div>
+          <div class="proj-links">
+            <a class="plink" href="#" aria-label="deploydog live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live</a>
+            <a class="plink" href="#" aria-label="deploydog source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <div class="proj-art" aria-hidden="true"><span class="glyph">»</span><span class="idx">06</span></div>
+        <div class="proj-body">
+          <h3>Support Macros</h3>
+          <p>A browser extension that gives support agents snippet autocomplete, ticket templates, and tone-check suggestions.</p>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">Chrome API</span><span class="tag">Webpack</span></div>
+          <div class="proj-links">
+            <a class="plink" href="#" aria-label="Support Macros live demo"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg>Live</a>
+            <a class="plink" href="#" aria-label="Support Macros source code"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Experience ============ -->
+<section class="section" id="experience" aria-label="Experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/experience</span>
+      <h2 tabindex="-1">The road so far</h2>
+      <p class="section-sub">A deliberate detour through support made me the developer I am.</p>
+    </div>
+    <!-- ✏️ CUSTOMIZE: your real roles -->
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <article class="tl-card">
+          <div class="tl-head">
+            <div><span class="tl-role">Senior Full-Stack Developer</span><span class="tl-kind">dev</span>
+              <div class="tl-org">TechNova Solutions</div></div>
+            <span class="tl-dates">2022 — present</span>
+          </div>
+          <ul>
+            <li>Lead developer on a SaaS analytics platform serving 40k users; cut API latency by 45%.</li>
+            <li>Built internal incident tooling adopted by 3 teams; mean-time-to-recovery down 30%.</li>
+            <li>Mentor juniors and run weekly code reviews &amp; pairing sessions.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="tl-item reveal">
+        <article class="tl-card">
+          <div class="tl-head">
+            <div><span class="tl-role">Software Support Engineer</span><span class="tl-kind">support</span>
+              <div class="tl-org">CloudBridge</div></div>
+            <span class="tl-dates">2019 — 2022</span>
+          </div>
+          <ul>
+            <li>Resolved 3,000+ tickets (95% CSAT) spanning API, billing, and infrastructure.</li>
+            <li>Authored 120+ knowledge-base articles; deflected 22% of inbound ticket volume.</li>
+            <li>Acted as the escalation bridge between support and engineering during incidents.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="tl-item reveal">
+        <article class="tl-card">
+          <div class="tl-head">
+            <div><span class="tl-role">Junior Developer / IT Support</span><span class="tl-kind">dev · support</span>
+              <div class="tl-org">PixelForge Studio</div></div>
+            <span class="tl-dates">2017 — 2019</span>
+          </div>
+          <ul>
+            <li>Shipped 15 client sites (HTML/CSS/JS/PHP) with zero missed deadlines.</li>
+            <li>Ran backups, deploys, and the occasional "have you tried turning it off and on again".</li>
+            <li>Automated the studio's invoicing flow, saving ~6 hours a week.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Testimonials ============ -->
+<section class="section" id="testimonials" aria-label="Testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/kind-words</span>
+      <h2 tabindex="-1">Word on the wire</h2>
+      <p class="section-sub">From the people who shipped with me — and slept better for it.</p>
+    </div>
+    <div class="testi-grid">
+      <!-- ✏️ CUSTOMIZE: real quotes -->
+      <div class="testi reveal">
+        <blockquote>"Kendrick built our platform, then stayed to fix what reality threw at it. Our MTTR went from hours to minutes."</blockquote>
+        <div class="testi-who"><span class="ava" aria-hidden="true">ML</span>
+          <div><div class="testi-name">Maya Lindqvist</div><div class="testi-role">CTO, Freightline</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <blockquote>"The rare developer who writes docs humans actually read. Our support queue dropped by a fifth after his knowledge base shipped."</blockquote>
+        <div class="testi-who"><span class="ava" aria-hidden="true">DO</span>
+          <div><div class="testi-name">Daniel Okafor</div><div class="testi-role">Support Lead, CloudBridge</div></div></div>
+      </div>
+      <div class="testi reveal">
+        <blockquote>"Calm under incident pressure, ruthless about root causes. If Kendrick ships it, you can sleep at night."</blockquote>
+        <div class="testi-who"><span class="ava" aria-hidden="true">PR</span>
+          <div><div class="testi-name">Priya Raman</div><div class="testi-role">Product Manager, TechNova</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Contact ============ -->
+<section class="section" id="contact" aria-label="Contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">~/contact</span>
+      <h2 tabindex="-1">Let's build (or fix) something together.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-copy reveal">
+        <p>Whether you need something built from scratch, rescued from production, or documented so it stops generating tickets — I'd genuinely love to hear about it.</p>
+        <ul class="cinfo-list">
+          <li class="cinfo"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+            <div><span class="lbl">email</span><a href="mailto:itskendev@gmail.com">itskendev@gmail.com</a></div></li>
+          <li class="cinfo"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>
+            <div><span class="lbl">location</span>San Pedro, Laguna, PH · UTC+8</div></li>
+          <li class="cinfo"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+            <div><span class="lbl">response time</span>within 24h — usually much faster</div></li>
+        </ul>
+        <!-- ✏️ CUSTOMIZE: your real social URLs -->
+        <div class="socials">
+          <a class="soc" href="https://github.com/itskendev" aria-label="GitHub" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></a>
+          <a class="soc" href="https://linkedin.com/in/itskendev" aria-label="LinkedIn" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a class="soc" href="https://x.com/itskendev" aria-label="X (Twitter)" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-xlogo"/></svg></a>
+          <a class="soc" href="https://stackoverflow.com/users/000000/itskendev" aria-label="Stack Overflow" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg></a>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <!-- ✏️ CUSTOMIZE: add a real action (Formspree / Netlify Forms / your API)
+             and remove the demo handler in the JS below -->
+        <form id="contact-form" novalidate>
+          <div class="form-fields">
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+              <p class="field-msg" id="err-name">Please tell me your name.</p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              <p class="field-msg" id="err-email">That email doesn't look quite right.</p>
+            </div>
+            <div class="field">
+              <label for="f-msg">Message</label>
+              <textarea id="f-msg" name="message" placeholder="Tell me about the thing you want built — or the thing that's on fire…"></textarea>
+              <p class="field-msg" id="err-msg">A few words help me help you (10+ characters).</p>
+            </div>
+            <button class="btn btn-primary" type="submit">Send Message
+              <svg class="ic" style="width:16px;height:16px" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            <p class="form-note"></p>
+          </div>
+          <div class="form-success" id="form-status" tabindex="-1" role="status">
+            <div class="success-ic"><svg class="ic" aria-hidden="true"><use href="#i-check-circle"/></svg></div>
+            <h3>Message sent ✓</h3>
+            <p>Thanks for reaching out — I'll get back to you within 24 hours.</p>
+            <button class="btn btn-outline" type="button" id="form-again">Send another</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer>
+  <div class="container foot">
+    <span>© <span id="year">2025</span> Kendrick Lucena</span>
+    <small>built with vanilla html · css · js — no frameworks were harmed</small>
+    <span class="foot-status"><span class="dot" aria-hidden="true"></span>all systems operational · 0 unresolved tickets</span>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top">
+  <svg class="ic" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+</button>
+
+<!-- Command palette ( / or Ctrl+K ) -->
+<div class="pal-back" id="pal-back" aria-hidden="true">
+  <div class="pal" role="dialog" aria-modal="true" aria-label="Quick navigation">
+    <div class="pal-head">
+      <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="pal-input" type="text" placeholder="Jump to…" aria-label="Search sections and actions" autocomplete="off">
+      <kbd class="pal-kbd">esc</kbd>
+    </div>
+    <ul class="pal-list" id="pal-list" aria-label="Commands"></ul>
+    <div class="pal-foot"><span>↑↓ navigate</span><span>↵ select</span><span>/ or ctrl+k opens</span></div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+const $  = (s,c)=> (c||document).querySelector(s);
+const $$ = (s,c)=> Array.from((c||document).querySelectorAll(s));
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const EMAIL = 'itskendev@gmail.com';
+
+/* ---------- Theme ---------- */
+const root = document.documentElement;
+const themeBtn = $('#theme-toggle');
+let animTimer;
+function applyTheme(t){
+  root.dataset.theme = t;
+  try{ localStorage.setItem('theme', t); }catch(e){}
+  if(themeBtn) themeBtn.setAttribute('aria-pressed', String(t==='light'));
+  const mc = $('meta[name="theme-color"]');
+  if(mc) mc.content = (t==='light') ? '#f6f7f9' : '#0a0a0f';
+}
+function toggleTheme(){
+  applyTheme(root.dataset.theme==='dark' ? 'light' : 'dark');
+  if(!prefersReduced){
+    root.classList.add('theme-anim');
+    clearTimeout(animTimer);
+    animTimer = setTimeout(()=>root.classList.remove('theme-anim'), 400);
+  }
+}
+if(themeBtn){
+  themeBtn.setAttribute('aria-pressed', String(root.dataset.theme==='light'));
+  themeBtn.addEventListener('click', toggleTheme);
+}
+
+/* ---------- Mobile nav ---------- */
+const navToggle = $('#nav-toggle'), navMenu = $('#nav-menu');
+function closeMenu(){
+  if(navMenu) navMenu.classList.remove('open');
+  if(navToggle) navToggle.setAttribute('aria-expanded','false');
+}
+if(navToggle && navMenu){
+  navToggle.addEventListener('click', ()=>{
+    const open = navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  navMenu.addEventListener('click', e=>{ if(e.target.closest('a')) closeMenu(); });
+  document.addEventListener('click', e=>{
+    if(navMenu.classList.contains('open') && !e.target.closest('.nav-inner')) closeMenu();
+  });
+}
+
+/* ---------- Scroll reveal ---------- */
+const revealEls = $$('.reveal');
+if(prefersReduced || !('IntersectionObserver' in window)){
+  revealEls.forEach(el=>el.classList.add('in'));
+}else{
+  const ro = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach(el=>ro.observe(el));
+}
+
+/* ---------- Active nav link ---------- */
+const navLinks = $$('.nav-links a[href^="#"]');
+const secs = navLinks.map(a=>$(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window && secs.length){
+  const spy = new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(en.isIntersecting){
+        navLinks.forEach(a=>a.classList.toggle('active',
+          a.getAttribute('href') === '#'+en.target.id));
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px', threshold:0});
+  secs.forEach(s=>spy.observe(s));
+}
+
+/* ---------- Back to top ---------- */
+const topBtn = $('#back-to-top');
+window.addEventListener('scroll', ()=>{
+  if(topBtn) topBtn.classList.toggle('show', window.scrollY > 600);
+},{passive:true});
+
+/* ---------- Terminal typing ---------- */
+const term = $('#term-body');
+const TS = [
+  {c:'whoami',              o:'kendrick · full-stack dev & support specialist'},
+  {c:'cat stack.txt',       o:'react · typescript · node · postgres · docker'},
+  {c:'./deploy --production', o:'✓ deployed · monitoring · 0 open incidents', ok:true},
+  {c:'uptime --smug',       o:'99.9% — still standing'}
+];
+if(term && !prefersReduced){
+  term.innerHTML = '';
+  const sleep = ms=>new Promise(r=>setTimeout(r,ms));
+  (async function run(){
+    await sleep(650);
+    for(const s of TS){
+      const cl = document.createElement('div');
+      cl.className='tline cmd';
+      cl.innerHTML='<span class="pfx">$</span><span class="txt"></span>';
+      term.appendChild(cl);
+      const txt = cl.querySelector('.txt');
+      for(const ch of s.c){ txt.textContent += ch; await sleep(30+Math.random()*46); }
+      await sleep(220);
+      const ol = document.createElement('div');
+      ol.className = 'tline ' + (s.ok ? 'ok' : 'out');
+      ol.innerHTML = '<span class="pfx">'+(s.ok?'':'›')+'</span><span class="txt"></span>';
+      ol.querySelector('.txt').textContent = s.o;
+      term.appendChild(ol);
+      await sleep(380);
+    }
+    const cur = document.createElement('div');
+    cur.className='tline cmd';
+    cur.innerHTML='<span class="pfx">$</span><span class="tcur"></span>';
+    term.appendChild(cur);
+  })();
+}
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+
+/* ---------- Command palette ( / or Ctrl+K ) ---------- */
+const palBack = $('#pal-back'), palInput = $('#pal-input'), palList = $('#pal-list');
+let palOpen = false, palIdx = 0, palItems = [], lastFocus = null;
+
+function go(sel){
+  closePal();
+  const el = $(sel);
+  if(!el) return;
+  el.scrollIntoView({behavior: prefersReduced ? 'auto' : 'smooth'});
+  const h = el.querySelector('h2[tabindex="-1"]') || el.querySelector('h2');
+  if(h) h.focus({preventScroll:true});
+}
+async function copyEmail(){
+  try{ await navigator.clipboard.writeText(EMAIL); toast('✓ ' + EMAIL + ' copied'); }
+  catch(e){ toast(EMAIL); }
+}
+const cmds = [
+  {t:'Home',h:'section',f:()=>go('#home')},
+  {t:'About',h:'section',f:()=>go('#about')},
+  {t:'Skills',h:'section',f:()=>go('#skills')},
+  {t:'Services',h:'section',f:()=>go('#services')},
+  {t:'Projects',h:'section',f:()=>go('#projects')},
+  {t:'Experience',h:'section',f:()=>go('#experience')},
+  {t:'Testimonials',h:'section',f:()=>go('#testimonials')},
+  {t:'Contact',h:'section',f:()=>go('#contact')},
+  {t:'Toggle dark / light mode',h:'theme',f:toggleTheme},
+  {t:'Copy email address',h:'action',f:copyEmail},
+  {t:'Download CV',h:'file',f:()=>{ closePal(); const b=$('#cv-btn'); if(b) b.click(); }}
+];
+function updateSel(){
+  palItems.forEach((b,i)=>b.closest('li').classList.toggle('sel', i===palIdx));
+}
+function renderPal(q){
+  q = (q||'').toLowerCase().trim();
+  const f = cmds.filter(c=>c.t.toLowerCase().includes(q));
+  palList.innerHTML = f.length ? '' :
+    '<li class="pal-empty">no matches — try "contact"</li>';
+  f.forEach((c,i)=>{
+    const li = document.createElement('li'); li.className='pal-item';
+    const b = document.createElement('button'); b.type='button';
+    const s1 = document.createElement('span'); s1.textContent = c.t;
+    const s2 = document.createElement('span'); s2.className='pal-hint'; s2.textContent = c.h;
+    b.append(s1,s2);
+    b.addEventListener('click', c.f);
+    b.addEventListener('mousemove', ()=>{ palIdx=i; updateSel(); });
+    li.appendChild(b); palList.appendChild(li);
+  });
+  palItems = $$('.pal-item button', palList);
+  palIdx = 0; updateSel();
+}
+function openPal(){
+  if(palOpen) return;
+  palOpen = true;
+  lastFocus = document.activeElement;
+  palBack.classList.add('open');
+  palBack.setAttribute('aria-hidden','false');
+  document.body.classList.add('lock');
+  palInput.value=''; renderPal('');
+  setTimeout(()=>palInput.focus(), 40);
+}
+function closePal(){
+  if(!palOpen) return;
+  palOpen = false;
+  palBack.classList.remove('open');
+  palBack.setAttribute('aria-hidden','true');
+  document.body.classList.remove('lock');
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+palInput.addEventListener('keydown', e=>{
+  if(!palItems.length) return;
+  if(e.key==='ArrowDown'){ e.preventDefault(); palIdx=(palIdx+1)%palItems.length; updateSel(); }
+  else if(e.key==='ArrowUp'){ e.preventDefault(); palIdx=(palIdx-1+palItems.length)%palItems.length; updateSel(); }
+  else if(e.key==='Enter'){ e.preventDefault(); palItems[palIdx] && palItems[palIdx].click(); }
+});
+palInput.addEventListener('input', ()=>renderPal(palInput.value));
+palBack.addEventListener('mousedown', e=>{ if(e.target===palBack) closePal(); });
+
+document.addEventListener('keydown', e=>{
+  const el = document.activeElement;
+  const typing = el && (el.tagName==='INPUT'||el.tagName==='TEXTAREA'||el.tagName==='SELECT'||el.isContentEditable);
+  if((e.ctrlKey||e.metaKey) && (e.key==='k'||e.key==='K')){
+    e.preventDefault(); palOpen ? closePal() : openPal(); return;
+  }
+  if(e.key==='Escape'){ closePal(); closeMenu(); return; }
+  if(e.key==='/' && !typing && !palOpen){ e.preventDefault(); openPal(); }
+});
+
+/* ---------- Contact form ---------- */
+const form = $('#contact-form');
+if(form){
+  const checks = [
+    ['#f-name',  v=>v.trim().length>=2, 'name'],
+    ['#f-email', v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), 'email'],
+    ['#f-msg',   v=>v.trim().length>=10, 'message']
+  ];
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    let ok = true, firstBad = null;
+    checks.forEach(([sel,test])=>{
+      const inp = $(sel), field = inp.closest('.field');
+      const valid = test(inp.value);
+      field.classList.toggle('err', !valid);
+      inp.setAttribute('aria-invalid', String(!valid));
+      if(!valid){ ok = false; if(!firstBad) firstBad = inp; }
+    });
+    if(!ok){ if(firstBad) firstBad.focus(); return; }
+    /* ✏️ TODO: replace this demo with a real endpoint, e.g.:
+       fetch('https://formspree.io/f/YOUR_ID', {
+         method:'POST', headers:{Accept:'application/json'},
+         body:new FormData(form)
+       }).then(...)                                        */
+    form.classList.add('sent');
+    const st = $('#form-status'); if(st) st.focus();
+    toast('✓ message queued for delivery');
+  });
+  $$('#contact-form input, #contact-form textarea').forEach(i=>{
+    i.addEventListener('input', ()=>{
+      i.closest('.field').classList.remove('err');
+      i.removeAttribute('aria-invalid');
+    });
+  });
+  const again = $('#form-again');
+  if(again) again.addEventListener('click', ()=>{
+    form.classList.remove('sent'); form.reset();
+    const n = $('#f-name'); if(n) n.focus();
+  });
+}
+
+/* ---------- Year ---------- */
+const y = $('#year'); if(y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
