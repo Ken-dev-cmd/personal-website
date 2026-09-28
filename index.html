@@ -659,7 +659,7 @@ footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
         <!-- ✏️ CUSTOMIZE: swap this placeholder for a real photo -->
         <div class="avatar" role="img" aria-label="Portrait placeholder for Kendrick Lucena">
           <span class="frame" aria-hidden="true"></span>
-          <span class="initials" aria-hidden="true">KL</span>
+          <span class="initials" aria-hidden="true">KEN</span>
           <span class="tag">swap in your photo →</span>
         </div>
       </div>
@@ -1240,7 +1240,6 @@ document.addEventListener('keydown', e=>{
   if(e.key==='/' && !typing && !palOpen){ e.preventDefault(); openPal(); }
 });
 
-/* ---------- Contact form ---------- */
 const form = $('#contact-form');
 if(form){
   const checks = [
@@ -1248,10 +1247,13 @@ if(form){
     ['#f-email', v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), 'email'],
     ['#f-msg',   v=>v.trim().length>=10, 'message']
   ];
+
   form.addEventListener('submit', e=>{
     e.preventDefault();
+
+    /* --- Client-side validation --- */
     let ok = true, firstBad = null;
-    checks.forEach(([sel,test])=>{
+    checks.forEach(([sel,test,label])=>{
       const inp = $(sel), field = inp.closest('.field');
       const valid = test(inp.value);
       field.classList.toggle('err', !valid);
@@ -1259,24 +1261,60 @@ if(form){
       if(!valid){ ok = false; if(!firstBad) firstBad = inp; }
     });
     if(!ok){ if(firstBad) firstBad.focus(); return; }
-    /* ✏️ TODO: replace this demo with a real endpoint, e.g.:
-       fetch('https://formspree.io/f/YOUR_ID', {
-         method:'POST', headers:{Accept:'application/json'},
-         body:new FormData(form)
-       }).then(...)                                        */
-    form.classList.add('sent');
-    const st = $('#form-status'); if(st) st.focus();
-    toast('✓ message queued for delivery');
+
+    /* --- Submission to FormSubmit --- */
+    const submitBtn = form.querySelector('[type="submit"]');
+    const origText  = submitBtn?.textContent;
+
+    if(submitBtn){
+      submitBtn.disabled = true;
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.innerHTML = '<span class="spinner"></span> Sending&hellip;';
+    }
+
+    fetch('https://formsubmit.co/ajax/itskendev@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name:  $('#f-name').value.trim(),
+        email: $('#f-email').value.trim(),
+        message: $('#f-msg').value.trim(),
+        _subject: 'New contact form message'
+      })
+    })
+    .then(res => {
+      if(!res.ok) throw new Error('Server error — please try again.');
+      return res.json();
+    })
+    .then(() => {
+      form.classList.add('sent');
+      const st = $('#form-status'); if(st) st.focus();
+      toast('✓ Message sent successfully!');
+    })
+    .catch(err => {
+      toast('✗ ' + err.message, true);
+      if(submitBtn){
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.textContent = origText;
+      }
+    });
   });
+
   $$('#contact-form input, #contact-form textarea').forEach(i=>{
     i.addEventListener('input', ()=>{
       i.closest('.field').classList.remove('err');
       i.removeAttribute('aria-invalid');
     });
   });
+
   const again = $('#form-again');
   if(again) again.addEventListener('click', ()=>{
-    form.classList.remove('sent'); form.reset();
+    form.classList.remove('sent');
+    form.reset();
     const n = $('#f-name'); if(n) n.focus();
   });
 }
