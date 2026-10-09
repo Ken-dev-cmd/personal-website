@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('MDaqxG508hdb29CGy');</script>
 <!-- Set theme before first paint to avoid flash -->
 <script>
 (function(){try{var t=localStorage.getItem('theme');
@@ -530,7 +531,8 @@ footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
 
 <!-- SVG icon sprite -->
 <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.773-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.821 1.716 4.97 4.97.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.253-1.717 4.82-4.97 4.97-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.252-.149-4.82-1.717-4.97-4.97-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.252 1.717-4.82 4.97-4.97 1.265-.058 1.645-.07 4.849-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.693.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
@@ -933,11 +935,13 @@ footer{border-top:1px solid var(--border);padding:2.1rem 0 2.8rem}
         </ul>
         <!-- ✏️ CUSTOMIZE: your real social URLs -->
         <div class="socials">
-          <a class="soc" href="https://github.com/Ken-dev-cmd" aria-label="GitHub" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></a>
-          <a class="soc" href="https://linkedin.com/in/itskendev" aria-label="LinkedIn" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
-          <a class="soc" href="https://x.com/itskendev" aria-label="X (Twitter)" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-xlogo"/></svg></a>
-          <a class="soc" href="https://stackoverflow.com/users/000000/itskendev" aria-label="Stack Overflow" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg></a>
-        </div>
+  <a class="soc" href="https://www.facebook.com/share/1cvvyhH5jb/" aria-label="Facebook" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+  <a class="soc" href="https://www.instagram.com/_k3nlucena?obrf=MTJnZXBmMDZ2ZXhlaA==" aria-label="Instagram" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+  <a class="soc" href="https://github.com/Ken-dev-cmd" aria-label="GitHub" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></a>
+  <a class="soc" href="https://linkedin.com/in/itskendev" aria-label="LinkedIn" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+  <a class="soc" href="https://www.threads.com/@_k3shiasknow" aria-label="X (Twitter)" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-xlogo"/></svg></a>
+  <a class="soc" href="https://stackoverflow.com/users/000000/itskendev" aria-label="Stack Overflow" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg></a>
+</div>
       </div>
 
       <div class="form-card reveal">
@@ -1240,6 +1244,7 @@ document.addEventListener('keydown', e=>{
   if(e.key==='/' && !typing && !palOpen){ e.preventDefault(); openPal(); }
 });
 
+/* ---------- Contact form ---------- */
 const form = $('#contact-form');
 if(form){
   const checks = [
@@ -1247,13 +1252,10 @@ if(form){
     ['#f-email', v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), 'email'],
     ['#f-msg',   v=>v.trim().length>=10, 'message']
   ];
-
   form.addEventListener('submit', e=>{
     e.preventDefault();
-
-    /* --- Client-side validation --- */
     let ok = true, firstBad = null;
-    checks.forEach(([sel,test,label])=>{
+    checks.forEach(([sel,test])=>{
       const inp = $(sel), field = inp.closest('.field');
       const valid = test(inp.value);
       field.classList.toggle('err', !valid);
@@ -1261,60 +1263,24 @@ if(form){
       if(!valid){ ok = false; if(!firstBad) firstBad = inp; }
     });
     if(!ok){ if(firstBad) firstBad.focus(); return; }
-
-    /* --- Submission to FormSubmit --- */
-    const submitBtn = form.querySelector('[type="submit"]');
-    const origText  = submitBtn?.textContent;
-
-    if(submitBtn){
-      submitBtn.disabled = true;
-      submitBtn.setAttribute('aria-busy', 'true');
-      submitBtn.innerHTML = '<span class="spinner"></span> Sending&hellip;';
-    }
-
-    fetch('https://formsubmit.co/ajax/itskendev@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name:  $('#f-name').value.trim(),
-        email: $('#f-email').value.trim(),
-        message: $('#f-msg').value.trim(),
-        _subject: 'New contact form message'
-      })
-    })
-    .then(res => {
-      if(!res.ok) throw new Error('Server error — please try again.');
-      return res.json();
-    })
-    .then(() => {
-      form.classList.add('sent');
-      const st = $('#form-status'); if(st) st.focus();
-      toast('✓ Message sent successfully!');
-    })
-    .catch(err => {
-      toast('✗ ' + err.message, true);
-      if(submitBtn){
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
-        submitBtn.textContent = origText;
-      }
-    });
+    /* ✏️ TODO: replace this demo with a real endpoint, e.g.:
+       fetch('https://formspree.io/f/YOUR_ID', {
+         method:'POST', headers:{Accept:'application/json'},
+         body:new FormData(form)
+       }).then(...)                                        */
+    form.classList.add('sent');
+    const st = $('#form-status'); if(st) st.focus();
+    toast('✓ message queued for delivery');
   });
-
   $$('#contact-form input, #contact-form textarea').forEach(i=>{
     i.addEventListener('input', ()=>{
       i.closest('.field').classList.remove('err');
       i.removeAttribute('aria-invalid');
     });
   });
-
   const again = $('#form-again');
   if(again) again.addEventListener('click', ()=>{
-    form.classList.remove('sent');
-    form.reset();
+    form.classList.remove('sent'); form.reset();
     const n = $('#f-name'); if(n) n.focus();
   });
 }
