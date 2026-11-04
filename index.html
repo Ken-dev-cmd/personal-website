@@ -8,7 +8,7 @@
   <meta name="description" content="Kendrick Lucena — Full Stack Developer. I build modern web applications, create innovative solutions, and turn ideas into reality through code.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23873cff'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='26' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f7bff'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='26' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,27 +27,27 @@
     ========================= */
 
     :root {
-      --bg: #0b0b13;
-      --surface: #141420;
-      --surface2: #1b1b2a;
-      --text: #f7f5ff;
-      --muted: #b9b6cb;
-      --purple: #873cff;
-      --purple2: #a855f7;
-      --border: rgba(150, 80, 255, 0.28);
-      --shadow: 0 0 25px rgba(135, 60, 255, 0.13);
+      --bg: #0a0e17;
+      --surface: #111726;
+      --surface2: #182134;
+      --text: #f5f8ff;
+      --muted: #b4bdd1;
+      --accent: #2f7bff;
+      --accent2: #45b3ff;
+      --border: rgba(80, 140, 255, 0.28);
+      --shadow: 0 0 25px rgba(47, 123, 255, 0.13);
     }
 
     body.light {
-      --bg: #f7f5ff;
+      --bg: #f5f8ff;
       --surface: #ffffff;
-      --surface2: #eeebf9;
-      --text: #191326;
-      --muted: #615b70;
-      --purple: #782de0;
-      --purple2: #9b45e9;
-      --border: rgba(120, 45, 220, 0.22);
-      --shadow: 0 0 25px rgba(135, 60, 255, 0.08);
+      --surface2: #e8eefb;
+      --text: #131a2b;
+      --muted: #5a6478;
+      --accent: #1a5fd6;
+      --accent2: #2f7bff;
+      --border: rgba(26, 95, 214, 0.22);
+      --shadow: 0 0 25px rgba(47, 123, 255, 0.08);
     }
 
     * {
@@ -95,8 +95,8 @@
       margin: auto;
     }
 
-    .purple {
-      color: var(--purple);
+    .accent {
+      color: var(--accent);
     }
 
     .section-title {
@@ -108,7 +108,7 @@
     .section-line {
       width: 70px;
       height: 5px;
-      background: linear-gradient(90deg, var(--purple), var(--purple2));
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
       border-radius: 10px;
       margin-bottom: 28px;
       box-shadow: 0 0 12px var(--border);
@@ -123,13 +123,13 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(11, 11, 19, 0.92);
+      background: rgba(10, 14, 23, 0.92);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
     }
 
     body.light header {
-      background: rgba(247, 245, 255, 0.92);
+      background: rgba(245, 248, 255, 0.92);
     }
 
     .navbar {
@@ -149,7 +149,7 @@
     }
 
     .logo-icon {
-      color: var(--purple);
+      color: var(--accent);
       font-size: 42px;
       font-weight: 800;
     }
@@ -178,8 +178,8 @@
 
     .nav-links a:hover,
     .nav-links a.active {
-      background: linear-gradient(135deg, #7028d9, #922fff);
-      box-shadow: 0 0 20px rgba(135, 60, 255, 0.35);
+      background: linear-gradient(135deg, #1f5fe0, #3f8dff);
+      box-shadow: 0 0 20px rgba(47, 123, 255, 0.35);
       color: white;
     }
 
@@ -195,7 +195,7 @@
     }
 
     .theme-btn {
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       background: var(--surface2);
       width: 52px;
       height: 28px;
@@ -208,7 +208,7 @@
       width: 23px;
       height: 23px;
       border-radius: 50%;
-      background: var(--purple);
+      background: var(--accent);
       position: absolute;
       left: 2px;
       top: 1px;
@@ -244,7 +244,7 @@
       overflow: hidden;
       background:
         radial-gradient(ellipse at 78% 42%,
-        rgba(115, 40, 230, 0.25), transparent 50%),
+        rgba(35, 105, 255, 0.25), transparent 50%),
         var(--bg);
     }
 
@@ -259,7 +259,7 @@
       background: repeating-linear-gradient(
         135deg,
         transparent 0 22px,
-        rgba(135, 60, 255, 0.30) 22px 25px
+        rgba(47, 123, 255, 0.30) 22px 25px
       );
     }
 
@@ -305,7 +305,7 @@
     }
 
     .hero-role span {
-      color: var(--purple);
+      color: var(--accent);
     }
 
     .hero-description {
@@ -340,25 +340,25 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #7629e5, #9a38ff);
-      border: 1px solid var(--purple);
+      background: linear-gradient(135deg, #1f5fe0, #3f8dff);
+      border: 1px solid var(--accent);
       color: white;
-      box-shadow: 0 0 20px rgba(135, 60, 255, 0.2);
+      box-shadow: 0 0 20px rgba(47, 123, 255, 0.2);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(135, 60, 255, 0.5);
+      box-shadow: 0 0 30px rgba(47, 123, 255, 0.5);
     }
 
     .btn-outline {
       background: transparent;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       color: var(--text);
     }
 
     .btn-outline:hover {
-      background: var(--purple);
+      background: var(--accent);
       color: white;
       transform: translateY(-3px);
     }
@@ -390,11 +390,11 @@
     }
 
     .hero-socials a:hover {
-      background: linear-gradient(135deg, #7028d9, #922fff);
-      border-color: var(--purple);
+      background: linear-gradient(135deg, #1f5fe0, #3f8dff);
+      border-color: var(--accent);
       color: white;
       transform: translateY(-3px);
-      box-shadow: 0 0 18px rgba(135, 60, 255, 0.35);
+      box-shadow: 0 0 18px rgba(47, 123, 255, 0.35);
     }
 
     /* Photo with glowing neon frame (like the mockup) */
@@ -409,20 +409,20 @@
     .hero-photo-frame {
       position: relative;
       padding: 10px;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       border-radius: 20px;
-      background: rgba(135, 60, 255, 0.05);
-      box-shadow: 0 0 35px rgba(135, 60, 255, 0.35);
+      background: rgba(47, 123, 255, 0.05);
+      box-shadow: 0 0 35px rgba(47, 123, 255, 0.35);
     }
 
     .hero-photo-frame::before {
       content: "";
       position: absolute;
       inset: -18px;
-      border: 1px solid rgba(135, 60, 255, 0.35);
+      border: 1px solid rgba(47, 123, 255, 0.35);
       border-radius: 28px;
       transform: rotate(-5deg);
-      box-shadow: 0 0 25px rgba(135, 60, 255, 0.15);
+      box-shadow: 0 0 25px rgba(47, 123, 255, 0.15);
       pointer-events: none;
     }
 
@@ -430,7 +430,7 @@
       width: min(300px, 100%);
       aspect-ratio: 10 / 11;
       object-fit: cover;
-      object-position: center;
+      object-position: top center;
       border-radius: 12px;
       display: block;
     }
@@ -445,11 +445,11 @@
       font-weight: 800;
       color: var(--text);
       padding: 12px 18px;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       border-radius: 14px;
-      background: rgba(20, 20, 32, 0.9);
+      background: rgba(17, 23, 38, 0.9);
       transform: rotate(-8deg);
-      box-shadow: 0 0 22px rgba(135, 60, 255, 0.4);
+      box-shadow: 0 0 22px rgba(47, 123, 255, 0.4);
     }
 
     body.light .hero-code-badge {
@@ -480,9 +480,9 @@
       width: 210px;
       height: 220px;
       object-fit: cover;
-      object-position: center;
+      object-position: top center;
       border-radius: 12px;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       box-shadow: var(--shadow);
       flex-shrink: 0;
     }
@@ -511,7 +511,7 @@
     .personal-info svg {
       width: 14px;
       height: 14px;
-      color: var(--purple);
+      color: var(--accent);
     }
 
     .skills-grid {
@@ -535,7 +535,7 @@
     }
 
     .skill-card:hover {
-      border-color: var(--purple);
+      border-color: var(--accent);
       transform: translateY(-5px);
       box-shadow: var(--shadow);
     }
@@ -583,7 +583,7 @@
     }
 
     .project-card:hover {
-      border-color: var(--purple);
+      border-color: var(--accent);
       box-shadow: var(--shadow);
       transform: translateY(-5px);
     }
@@ -620,7 +620,7 @@
       font-size: 12px;
       padding: 8px 14px;
       border-radius: 25px;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       color: var(--text);
       transition: 0.3s;
       display: inline-flex;
@@ -634,7 +634,7 @@
     }
 
     .project-link:hover {
-      background: var(--purple);
+      background: var(--accent);
       color: white;
     }
 
@@ -643,95 +643,14 @@
     ========================= */
 
     .all-projects {
-      padding: 0 0 60px;
+      padding: 0 0 70px;
     }
 
-    .all-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .all-project-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: 0.3s;
-    }
-
-    .all-project-card:hover {
-      border-color: var(--purple);
-      box-shadow: var(--shadow);
-      transform: translateY(-5px);
-    }
-
-    .all-project-image {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .all-project-art {
-      height: 170px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      background:
-        radial-gradient(ellipse at 70% 20%,
-        rgba(135, 60, 255, 0.25), transparent 60%),
-        linear-gradient(135deg, var(--surface2), var(--surface));
-      border-bottom: 1px solid var(--border);
-    }
-
-    .all-project-art span {
-      font-size: 54px;
-      font-weight: 800;
-      color: var(--purple);
-      text-shadow: 0 0 25px rgba(135, 60, 255, 0.45);
-    }
-
-    .all-project-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex: 1;
-    }
-
-    .all-project-body h3 {
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    .all-project-body p {
-      font-size: 12px;
+    .all-projects-sub {
       color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .all-project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .all-project-tags span {
-      font-size: 10.5px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: var(--surface2);
-    }
-
-    .all-project-body .project-link {
-      margin-top: auto;
+      font-size: 14px;
+      max-width: 560px;
+      margin-bottom: 25px;
     }
 
     /* =========================
@@ -743,7 +662,7 @@
       margin: 0 auto 40px;
       width: min(1000px, 90%);
       padding: 20px 35px;
-      border: 1px solid var(--purple);
+      border: 1px solid var(--accent);
       border-radius: 25px;
       background: var(--surface);
       box-shadow: var(--shadow);
@@ -760,7 +679,7 @@
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background: rgba(130, 40, 255, 0.06);
+      background: rgba(40, 110, 255, 0.06);
       right: -100px;
       top: -150px;
     }
@@ -775,7 +694,7 @@
     .cta-text > svg {
       width: 35px;
       height: 35px;
-      color: var(--purple);
+      color: var(--accent);
     }
 
     .cta-text h3 {
@@ -822,7 +741,7 @@
     }
 
     .social-links a:hover {
-      color: var(--purple);
+      color: var(--accent);
       transform: translateY(-3px);
     }
 
@@ -852,10 +771,6 @@
       }
 
       .projects-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .all-projects-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -981,10 +896,6 @@
         grid-template-columns: 1fr;
       }
 
-      .all-projects-grid {
-        grid-template-columns: 1fr;
-      }
-
       .projects-heading {
         align-items: flex-start;
         flex-direction: column;
@@ -1030,6 +941,8 @@
       .project-image {
         width: 100%;
         height: 170px;
+        object-fit: cover;
+        object-position: top center;
       }
     }
   </style>
@@ -1054,7 +967,7 @@
 
       <a href="#home" class="logo">
         <span class="logo-icon">&lt;/&gt;</span>
-        Kendrick <span class="purple">Dev</span>
+        Kendrick <span class="accent">Dev</span>
       </a>
 
       <ul class="nav-links" id="navLinks">
@@ -1066,7 +979,7 @@
       </ul>
 
       <div class="nav-actions">
-        <span class="purple"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></span>
+        <span class="accent"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></span>
 
         <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
           <span></span>
@@ -1093,7 +1006,7 @@
         <div class="hero-content reveal">
           <h1>
             Hi, I'm<br>
-            Kendrick <span class="purple">Lucena</span>
+            Kendrick <span class="accent">Lucena</span>
           </h1>
 
           <div class="hero-role">
@@ -1129,7 +1042,7 @@
           <div class="hero-photo-frame">
             <!-- Replace with your own photo -->
             <img
-              src="code.jpg"
+              src="codes.jpg"
               alt="Kendrick Lucena — Full Stack Developer"
               class="hero-photo"
             >
@@ -1357,25 +1270,28 @@
        ALL PROJECTS
   ========================= -->
 
-  <section class="all-projects" id="all-projects">
+  <section class="projects all-projects" id="all-projects">
     <div class="container">
 
       <h2 class="section-title">All Projects</h2>
       <div class="section-line"></div>
+      <p class="all-projects-sub">
+        A complete collection of the websites and systems I've built.
+      </p>
 
-      <div class="all-projects-grid">
+      <div class="projects-grid">
 
         <!-- PROJECT 1 -->
 
-        <article class="all-project-card reveal">
+        <div class="project-card reveal">
           <img
             src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80"
-            class="all-project-image"
+            class="project-image"
             alt="Coffee shop project"
             loading="lazy"
           >
 
-          <div class="all-project-body">
+          <div class="project-info">
             <h3>EUNIOA Coffee Shop</h3>
 
             <p>
@@ -1387,19 +1303,20 @@
               View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
             </a>
           </div>
-        </article>
+        </div>
+
 
         <!-- PROJECT 2 -->
 
-        <article class="all-project-card reveal">
+        <div class="project-card reveal">
           <img
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
-            class="all-project-image"
+            class="project-image"
             alt="Inventory dashboard project"
             loading="lazy"
           >
 
-          <div class="all-project-body">
+          <div class="project-info">
             <h3>Inventory System</h3>
 
             <p>
@@ -1411,19 +1328,20 @@
               View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
             </a>
           </div>
-        </article>
+        </div>
+
 
         <!-- PROJECT 3 -->
 
-        <article class="all-project-card reveal">
+        <div class="project-card reveal">
           <img
             src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80"
-            class="all-project-image"
+            class="project-image"
             alt="Device management project"
             loading="lazy"
           >
 
-          <div class="all-project-body">
+          <div class="project-info">
             <h3>Teknowface Device Manager</h3>
 
             <p>
@@ -1435,103 +1353,107 @@
               View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
             </a>
           </div>
-        </article>
+        </div>
+
 
         <!-- PROJECT 4 -->
 
-        <article class="all-project-card reveal">
-          <div class="all-project-art" aria-hidden="true"><span>&lt;/&gt;</span></div>
+        <div class="project-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80"
+            class="project-image"
+            alt="ALL STYLE PH website project"
+            loading="lazy"
+          >
 
-          <div class="all-project-body">
-            <h3>ALL STYLE PH WEBSITE</h3>
-
-            <p>
-              Create a user-friendly website with a
-              fully working mobile view.
-            </p>
-
-            <div class="all-project-tags">
-              <span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span><span>SQL</span>
-            </div>
-
-            <a href="#" class="project-link">
-              View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- PROJECT 5 -->
-
-        <article class="all-project-card reveal">
-          <div class="all-project-art" aria-hidden="true"><span>⇄</span></div>
-
-          <div class="all-project-body">
-            <h3>P.O.S SYSTEM ADMIN &amp; CASHIER</h3>
+          <div class="project-info">
+            <h3>ALL STYLE PH Website</h3>
 
             <p>
-              Real-time Tracking inventory &amp; Sales and also
-              handling customer receipt with professional
-              admin dashboard.
+              A complete, user-friendly website with a clean
+              design and a fully responsive mobile view.
             </p>
-
-            <div class="all-project-tags">
-              <span>HTML</span><span>Node.js</span><span>JavaScript</span><span>SQL</span>
-            </div>
-
-            <a href="#" class="project-link">
-              View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- PROJECT 6 -->
-
-        <article class="all-project-card reveal">
-          <div class="all-project-art" aria-hidden="true"><span>▲</span></div>
-
-          <div class="all-project-body">
-            <h3>ALL STYLE PH</h3>
-
-            <p>
-              A responsive motorcycle community website for Unit of
-              the Night riders. Features Events, Gallery with bike
-              categories (Aerox, Click, Wave, PCX), Merch section,
-              and Group Rides for community ride coordination.
-            </p>
-
-            <div class="all-project-tags">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span>
-            </div>
 
             <a href="https://ken-dev-cmd.github.io/asph-website/" target="_blank" rel="noopener" class="project-link">
               View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
             </a>
           </div>
-        </article>
+        </div>
+
+
+        <!-- PROJECT 5 -->
+
+        <div class="project-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=600&q=80"
+            class="project-image"
+            alt="Point of sale system project"
+            loading="lazy"
+          >
+
+          <div class="project-info">
+            <h3>P.O.S System Admin &amp; Cashier</h3>
+
+            <p>
+              Point-of-sale system with real-time inventory
+              and sales tracking, receipts, and an admin dashboard.
+            </p>
+
+            <a href="#" class="project-link">
+              View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
+            </a>
+          </div>
+        </div>
+
+
+        <!-- PROJECT 6 -->
+
+        <div class="project-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=600&q=80"
+            class="project-image"
+            alt="Motorcycle community website project"
+            loading="lazy"
+          >
+
+          <div class="project-info">
+            <h3>ALL STYLE PH Community</h3>
+
+            <p>
+              Motorcycle community website with events, gallery,
+              merch, and group rides — optimized for all devices.
+            </p>
+
+            <a href="https://ken-dev-cmd.github.io/asph-website/" target="_blank" rel="noopener" class="project-link">
+              View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
+            </a>
+          </div>
+        </div>
+
 
         <!-- PROJECT 7 -->
 
-        <article class="all-project-card reveal">
-          <div class="all-project-art" aria-hidden="true"><span>{ }</span></div>
+        <div class="project-card reveal">
+          <img
+            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80"
+            class="project-image"
+            alt="Personal website project"
+            loading="lazy"
+          >
 
-          <div class="all-project-body">
-            <h3>PERSONAL WEBSITE</h3>
+          <div class="project-info">
+            <h3>Personal Website</h3>
 
             <p>
-              Modern, responsive personal portfolio website showcasing
-              my skills, projects, experience, and services — optimized
-              for desktop, tablet, and mobile.
+              This responsive portfolio website showcasing my skills,
+              projects, and experience — built from scratch.
             </p>
-
-            <div class="all-project-tags">
-              <span>React</span><span>Node.js</span><span>SQLite</span><span>Meilisearch</span>
-            </div>
 
             <a href="https://ken-dev-cmd.github.io/personal-website/" target="_blank" rel="noopener" class="project-link">
               View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg>
             </a>
           </div>
-        </article>
+        </div>
 
       </div>
     </div>
@@ -1682,6 +1604,11 @@
           current = section.getAttribute("id");
         }
       });
+
+      // The "All Projects" section belongs to the Projects nav item
+      if (current === "all-projects") {
+        current = "projects";
+      }
 
       navItems.forEach(link => {
         link.classList.remove("active");
